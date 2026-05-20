@@ -23,7 +23,11 @@ function refreshPreview(){
   const frame =
     document.getElementById('previewFrame');
 
-  frame.src = frame.src;
+  if(frame){
+
+    frame.src = frame.src;
+
+  }
 
 }
 
@@ -54,25 +58,28 @@ async function uploadImage(file){
   const fileName =
     `${Date.now()}-${file.name}`;
 
-  // UPLOAD
+  // UPLOAD IMAGE
   const { error } =
     await supabaseClient
       .storage
-      .      .storage
-      .from('church-images')
+      .from('church-media')
       .upload(fileName, file);
 
   if(error){
+
     console.error(error);
+
     alert('Upload failed');
+
     return null;
+
   }
 
   // GET PUBLIC URL
   const { data } =
     supabaseClient
       .storage
-      .from('church-images')
+      .from('church-media')
       .getPublicUrl(fileName);
 
   return data.publicUrl;
@@ -93,11 +100,17 @@ async function loadWebsiteSettings(){
       .single();
 
   if(error){
+
     console.error(error);
+
     return;
+
   }
 
+  // ======================================
   // INPUTS
+  // ======================================
+
   document.getElementById('churchName').value =
     data.church_name || '';
 
@@ -125,7 +138,37 @@ async function loadWebsiteSettings(){
   document.getElementById('footerText').value =
     data.footer_text || '';
 
-  // LOGO
+  // SOCIALS
+  if(document.getElementById('facebookLink')){
+
+    document.getElementById('facebookLink').value =
+      data.facebook_link || '';
+
+  }
+
+  if(document.getElementById('youtubeLink')){
+
+    document.getElementById('youtubeLink').value =
+      data.youtube_link || '';
+
+  }
+
+  if(document.getElementById('emailLink')){
+
+    document.getElementById('emailLink').value =
+      data.email_link || '';
+
+  }
+
+  // HERO BACKGROUND
+  if(document.getElementById('heroBackground')){
+
+    document.getElementById('heroBackground').value =
+      data.hero_background || '';
+
+  }
+
+  // LOGO PREVIEW
   if(data.logo_url){
 
     const logoPreview =
@@ -145,6 +188,10 @@ async function loadWebsiteSettings(){
 // ======================================
 
 async function updateWebsiteSettings(){
+
+  // ======================================
+  // GET VALUES
+  // ======================================
 
   const churchName =
     document.getElementById('churchName').value;
@@ -173,13 +220,27 @@ async function updateWebsiteSettings(){
   const footerText =
     document.getElementById('footerText').value;
 
-  // LOGO FILE
+  const facebookLink =
+    document.getElementById('facebookLink')?.value || '';
+
+  const youtubeLink =
+    document.getElementById('youtubeLink')?.value || '';
+
+  const emailLink =
+    document.getElementById('emailLink')?.value || '';
+
+  const heroBackground =
+    document.getElementById('heroBackground')?.value || '';
+
+  // ======================================
+  // LOGO
+  // ======================================
+
   const logoFile =
     document.getElementById('logoInput').files[0];
 
   let logoUrl = null;
 
-  // UPLOAD IF HAS FILE
   if(logoFile){
 
     logoUrl =
@@ -187,7 +248,10 @@ async function updateWebsiteSettings(){
 
   }
 
-  // UPDATE DATABASE
+  // ======================================
+  // UPDATE DATA
+  // ======================================
+
   const updateData = {
 
     church_name:churchName,
@@ -202,17 +266,27 @@ async function updateWebsiteSettings(){
     sunday_service:sundayService,
     midweek_service:midweekService,
 
-    footer_text:footerText
+    footer_text:footerText,
+
+    facebook_link:facebookLink,
+    youtube_link:youtubeLink,
+    email_link:emailLink,
+
+    hero_background:heroBackground
 
   };
 
-  // ONLY UPDATE LOGO IF EXISTS
+  // ONLY UPDATE LOGO IF NEW
   if(logoUrl){
 
     updateData.logo_url =
       logoUrl;
 
   }
+
+  // ======================================
+  // UPDATE DATABASE
+  // ======================================
 
   const { error } =
     await supabaseClient
@@ -223,6 +297,7 @@ async function updateWebsiteSettings(){
   if(error){
 
     console.error(error);
+
     alert('Failed to update website');
 
     return;
@@ -256,6 +331,7 @@ async function createSermon(){
   if(!title || !imageFile){
 
     alert('Please complete sermon fields');
+
     return;
 
   }
@@ -279,6 +355,7 @@ async function createSermon(){
   if(error){
 
     console.error(error);
+
     alert('Failed to publish sermon');
 
     return;
@@ -315,6 +392,7 @@ async function createEvent(){
   if(!title){
 
     alert('Please enter event title');
+
     return;
 
   }
@@ -333,6 +411,7 @@ async function createEvent(){
   if(error){
 
     console.error(error);
+
     alert('Failed to create event');
 
     return;
@@ -341,10 +420,65 @@ async function createEvent(){
 
   alert('Event created successfully!');
 
-  // CLEAR
+  // CLEAR INPUTS
   document.getElementById('eventTitle').value = '';
   document.getElementById('eventDate').value = '';
   document.getElementById('eventDescription').value = '';
+
+  refreshPreview();
+
+}
+
+// ======================================
+// CREATE MINISTRY
+// ======================================
+
+async function createMinistry(){
+
+  const icon =
+    document.getElementById('ministryIcon').value;
+
+  const title =
+    document.getElementById('ministryTitle').value;
+
+  const description =
+    document.getElementById('ministryDescription').value;
+
+  if(!title){
+
+    alert('Please enter ministry title');
+
+    return;
+
+  }
+
+  const { error } =
+    await supabaseClient
+      .from('ministries')
+      .insert([{
+
+        icon:icon,
+        title:title,
+        description:description
+
+      }]);
+
+  if(error){
+
+    console.error(error);
+
+    alert('Failed to create ministry');
+
+    return;
+
+  }
+
+  alert('Ministry added successfully!');
+
+  // CLEAR
+  document.getElementById('ministryIcon').value = '';
+  document.getElementById('ministryTitle').value = '';
+  document.getElementById('ministryDescription').value = '';
 
   refreshPreview();
 
