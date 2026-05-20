@@ -1,7 +1,4 @@
-```javascript
-// ======================================
-// SUPABASE
-// ======================================
+
 
 const SUPABASE_URL =
 "https://hhjvvxyulavdxhxcxkcz.supabase.co";
