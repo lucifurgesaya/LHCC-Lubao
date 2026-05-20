@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>
+    Lord of the Harvest Christian Church | Welcome Home
+  </title>
+
+  <!-- TAB LOGO -->
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- GOOGLE FONTS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    *{
+      font-family:'Inter', sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      overflow-x:hidden;
+      background:#f8f7f4;
+      color:#18181b;
+    }
+
+    .hero-bg{
+
+      background:
+      linear-gradient(
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.65)
+      ),
+
+      url('https://images.unsplash.com/photo-1516280440614-37939bbacd81?q=80&w=2070&auto=format&fit=crop');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .glass{
+      backdrop-filter:blur(16px);
+      background:rgba(255,255,255,0.08);
+    }
+
+    .card-hover{
+      transition:0.4s ease;
+    }
+
+    .card-hover:hover{
+      transform:translateY(-10px);
+      box-shadow:0 30px 60px rgba(0,0,0,0.12);
+    }
+
+    .fade-up{
+      animation:fadeUp 1s ease;
+    }
+
+    .glow{
+
+      position:absolute;
+      width:600px;
+      height:600px;
+      border-radius:999px;
+
+      background:rgba(255,215,0,0.12);
+
+      filter:blur(120px);
+
+      z-index:0;
+    }
+
+    @keyframes fadeUp{
+
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0px);
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-xl text-white transition-all duration-500">
+
+    <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+
+      <!-- LEFT -->
+      <div class="flex items-center gap-4">
+
+        <img
+          src="logo.png"
+          class="h-14 w-14 object-cover rounded-full border border-white/20"
+        />
+
+        <div>
+
+          <h1 class="text-2xl font-black tracking-wide">
+            Lord of the Harvest
+          </h1>
+
+          <p class="text-xs uppercase tracking-[0.3em] text-zinc-300">
+            Christian Church
+          </p>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="hidden md:flex gap-8 font-semibold text-sm">
+
+        <a href="#about" class="hover:text-yellow-300 transition">
+          About
+        </a>
+
+        <a href="#ministries" class="hover:text-yellow-300 transition">
+          Ministries
+        </a>
+
+        <a href="#sermons" class="hover:text-yellow-300 transition">
+          Sermons
+        </a>
+
+        <a href="#events" class="hover:text-yellow-300 transition">
+          Events
+        </a>
+
+        <a href="#contact" class="hover:text-yellow-300 transition">
+          Contact
+        </a>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero-bg min-h-screen flex items-center text-white relative overflow-hidden">
+
+    <!-- GLOW -->
+    <div class="glow top-0 left-0"></div>
+    <div class="glow bottom-0 right-0"></div>
+
+    <div class="max-w-7xl mx-auto px-6 py-40 grid lg:grid-cols-2 gap-16 items-center relative z-10">
+
+      <!-- LEFT -->
+      <div class="space-y-8 fade-up">
+
+        <div class="inline-flex items-center gap-3 rounded-full border border-white/20 px-5 py-2 glass">
+          ✨ Welcome To Our Church Family
+        </div>
+
+        <div class="space-y-6">
+
+          <h1 class="text-6xl md:text-8xl font-black leading-none">
+            Find Hope,
+            <br>
+            Faith,
+            <br>
+            and Purpose.
+          </h1>
+
+          <p class="max-w-2xl text-xl text-zinc-200 leading-relaxed">
+            A Christ-centered church where lives are transformed through worship, prayer, community, and the power of God's Word.
+          </p>
+
+        </div>
+
+        <div class="flex flex-wrap gap-4">
+
+          <a
+            href="#contact"
+            class="bg-yellow-400 text-black px-8 py-4 rounded-2xl font-bold hover:scale-105 transition"
+          >
+            Join Us Sunday
+          </a>
+
+          <a
+            href="#sermons"
+            class="border border-white/20 glass px-8 py-4 rounded-2xl hover:bg-white hover:text-black transition"
+          >
+            Watch Sermons
+          </a>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT HERO CARD -->
+      <div class="fade-up">
+
+        <div class="bg-white text-black rounded-[2.5rem] p-10 shadow-2xl">
+
+          <div class="flex justify-between items-center mb-8">
+
+            <div>
+
+              <h2 class="text-3xl font-black">
+                Sunday Worship
+              </h2>
+
+              <p class="text-zinc-500 mt-2">
+                Come worship with us this week.
+              </p>
+
+            </div>
+
+            <div class="h-4 w-4 bg-green-500 rounded-full animate-pulse"></div>
+
+          </div>
+
+          <div class="space-y-6">
+
+            <div class="rounded-3xl bg-zinc-100 p-6">
+
+              <p class="text-sm uppercase tracking-[0.2em] text-zinc-500">
+                Main Service
+              </p>
+
+              <h3 class="text-4xl font-black mt-2">
+                Sunday • 9:00 AM
+              </h3>
+
+            </div>
+
+            <div class="rounded-3xl bg-black text-white p-6">
+
+              <p class="text-sm uppercase tracking-[0.2em] text-zinc-400">
+                Midweek Prayer
+              </p>
+
+              <h3 class="text-4xl font-black mt-2">
+                Wednesday • 7:00 PM
+              </h3>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- LIVE SECTION -->
+  <section class="bg-yellow-400 py-6">
+
+    <div class="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row justify-between items-center gap-6">
+
+      <div class="flex items-center gap-4">
+
+        <div class="h-4 w-4 bg-red-500 rounded-full animate-pulse"></div>
+
+        <p class="font-black text-lg">
+          LIVE SERVICE THIS SUNDAY • 9:00 AM
+        </p>
+
+      </div>
+
+      <a
+        href="#"
+        class="bg-black text-white px-8 py-3 rounded-2xl hover:scale-105 transition"
+      >
+        Watch Livestream
+      </a>
+
+    </div>
+
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="max-w-7xl mx-auto px-6 py-32">
+
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+
+      <div>
+
+        <p class="uppercase tracking-[0.3em] text-zinc-500 text-sm">
+          About Our Church
+        </p>
+
+        <h2 class="text-6xl font-black mt-6 leading-tight">
+          Building Lives Through Jesus Christ.
+        </h2>
+
+      </div>
+
+      <div class="space-y-6 text-lg leading-relaxed text-zinc-600">
+
+        <p>
+          Our church exists to share the Gospel, serve the community, and help people grow deeper in their relationship with Jesus.
+        </p>
+
+        <p>
+          Whether you are new to faith or have followed Christ for years, you are welcome here.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6 pt-6">
+
+          <div class="bg-white rounded-3xl p-8 shadow-lg">
+
+            <h3 class="text-5xl font-black">
+              500+
+            </h3>
+
+            <p class="text-zinc-500 mt-2">
+              Members
+            </p>
+
+          </div>
+
+          <div class="bg-white rounded-3xl p-8 shadow-lg">
+
+            <h3 class="text-5xl font-black">
+              15+
+            </h3>
+
+            <p class="text-zinc-500 mt-2">
+              Ministries
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MINISTRIES -->
+  <section id="ministries" class="bg-white py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <p class="uppercase tracking-[0.3em] text-zinc-500 text-sm">
+          Ministries
+        </p>
+
+        <h2 class="text-6xl font-black mt-6">
+          Serving Every Generation
+        </h2>
+
+      </div>
+
+      <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+
+        <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
+
+          <div class="text-5xl">🎵</div>
+
+          <h3 class="text-3xl font-black mt-6">
+            Worship Team
+          </h3>
+
+          <p class="text-zinc-600 mt-4 leading-relaxed">
+            Leading the church into God's presence through worship.
+          </p>
+
+        </div>
+
+        <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
+
+          <div class="text-5xl">👨‍👩‍👧</div>
+
+          <h3 class="text-3xl font-black mt-6">
+            Family Ministry
+          </h3>
+
+          <p class="text-zinc-600 mt-4 leading-relaxed">
+            Supporting marriages, parents, and families.
+          </p>
+
+        </div>
+
+        <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
+
+          <div class="text-5xl">🔥</div>
+
+          <h3 class="text-3xl font-black mt-6">
+            Youth Ministry
+          </h3>
+
+          <p class="text-zinc-600 mt-4 leading-relaxed">
+            Empowering the next generation for Christ.
+          </p>
+
+        </div>
+
+        <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
+
+          <div class="text-5xl">🙏</div>
+
+          <h3 class="text-3xl font-black mt-6">
+            Prayer Ministry
+          </h3>
+
+          <p class="text-zinc-600 mt-4 leading-relaxed">
+            Standing in prayer and intercession together.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- SERMONS -->
+  <section id="sermons" class="py-32 bg-black text-white">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="flex flex-col lg:flex-row justify-between gap-10 mb-20">
+
+        <div>
+
+          <p class="uppercase tracking-[0.3em] text-zinc-400 text-sm">
+            Latest Sermons
+          </p>
+
+          <h2 class="text-6xl font-black mt-6 leading-tight">
+            Messages That Change Lives.
+          </h2>
+
+        </div>
+
+        <p class="max-w-xl text-zinc-300 text-lg leading-relaxed">
+          Watch inspiring sermons and teachings designed to strengthen your faith and encourage your walk with God.
+        </p>
+
+      </div>
+
+      <div class="grid lg:grid-cols-3 gap-8">
+
+        <!-- CARD -->
+        <div class="bg-zinc-900 rounded-[2rem] overflow-hidden card-hover">
+
+          <img
+            src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1974&auto=format&fit=crop"
+            class="h-64 w-full object-cover"
+          />
+
+          <div class="p-8">
+
+            <p class="text-zinc-400 text-sm uppercase tracking-[0.2em]">
+              Sunday Message
+            </p>
+
+            <h3 class="text-3xl font-black mt-4">
+              Walking In Faith
+            </h3>
+
+            <button class="mt-8 text-yellow-400 font-semibold uppercase tracking-[0.2em]">
+              Watch Sermon →
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- EVENTS -->
+  <section id="events" class="py-32">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+      <div class="text-center mb-20">
+
+        <p class="uppercase tracking-[0.3em] text-zinc-500 text-sm">
+          Upcoming Events
+        </p>
+
+        <h2 class="text-6xl font-black mt-6">
+          Join Our Community Events
+        </h2>
+
+      </div>
+
+      <div class="space-y-8">
+
+        <div class="bg-white rounded-[2rem] p-10 shadow-lg flex flex-col lg:flex-row justify-between gap-10 items-center card-hover">
+
+          <div>
+
+            <p class="text-zinc-500 uppercase tracking-[0.2em] text-sm">
+              June 25, 2026
+            </p>
+
+            <h3 class="text-4xl font-black mt-4">
+              Worship Night Revival
+            </h3>
+
+          </div>
+
+          <button class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition">
+            Learn More
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MISSION -->
+  <section class="py-32 bg-gradient-to-r from-black to-zinc-900 text-white text-center">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+      <p class="uppercase tracking-[0.3em] text-zinc-400 text-sm">
+        Our Mission
+      </p>
+
+      <h2 class="text-6xl font-black mt-6 leading-tight">
+        Reaching Souls.
+        <br>
+        Building Faith.
+        <br>
+        Glorifying Jesus.
+      </h2>
+
+      <p class="text-zinc-300 text-xl mt-10 leading-relaxed">
+        We exist to bring people into a life-changing relationship with Jesus Christ through worship, discipleship, and the power of God's Word.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="bg-white py-32">
+
+    <div class="max-w-5xl mx-auto px-6 text-center">
+
+      <p class="uppercase tracking-[0.3em] text-zinc-500 text-sm">
+        Contact Us
+      </p>
+
+      <h2 class="text-6xl font-black mt-6 leading-tight">
+        We Would Love To Meet You.
+      </h2>
+
+      <p class="text-zinc-600 text-xl mt-8 leading-relaxed max-w-3xl mx-auto">
+        Join us this Sunday and experience worship, community, and God's presence together.
+      </p>
+
+      <div class="flex flex-wrap justify-center gap-6 mt-12">
+
+        <button class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition">
+          Facebook Page
+        </button>
+
+        <button class="border border-zinc-300 px-8 py-4 rounded-2xl hover:bg-zinc-100 transition">
+          YouTube Channel
+        </button>
+
+        <button class="border border-zinc-300 px-8 py-4 rounded-2xl hover:bg-zinc-100 transition">
+          Email Us
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-black text-white border-t border-white/10">
+
+    <div class="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-6">
+
+      <div>
+
+        <h3 class="text-2xl font-black">
+          Lord of the Harvest Christian Church
+        </h3>
+
+        <p class="text-zinc-400 mt-2">
+          Sharing the love of Jesus Christ to the world.
+        </p>
+
+      </div>
+
+      <p class="text-zinc-500 text-sm">
+        © 2026 LHCC. All rights reserved.
+      </p>
+
+    </div>
+
+  </footer>
+
+  <!-- PARALLAX -->
+  <script>
+
+    window.addEventListener('scroll', ()=>{
+
+      const scrollY = window.scrollY;
+
+      document.querySelector('.hero-bg')
+        .style.backgroundPositionY =
+        `${scrollY * 0.5}px`;
+
+    });
+
+  </script>
+
+</body>
+</html>
