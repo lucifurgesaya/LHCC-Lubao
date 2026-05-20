@@ -40,6 +40,8 @@ function previewLogo(event){
   const image =
     document.getElementById('logoPreview');
 
+  if(!event.target.files[0]) return;
+
   image.src =
     URL.createObjectURL(event.target.files[0]);
 
@@ -58,7 +60,7 @@ async function uploadImage(file){
   const fileName =
     `${Date.now()}-${file.name}`;
 
-  // UPLOAD IMAGE
+  // UPLOAD
   const { error } =
     await supabaseClient
       .storage
@@ -69,7 +71,7 @@ async function uploadImage(file){
 
     console.error(error);
 
-    alert('Upload failed');
+    alert('Image upload failed');
 
     return null;
 
@@ -107,10 +109,7 @@ async function loadWebsiteSettings(){
 
   }
 
-  // ======================================
-  // INPUTS
-  // ======================================
-
+  // WEBSITE SETTINGS
   document.getElementById('churchName').value =
     data.church_name || '';
 
@@ -138,7 +137,7 @@ async function loadWebsiteSettings(){
   document.getElementById('footerText').value =
     data.footer_text || '';
 
-  // SOCIALS
+  // OPTIONAL FIELDS
   if(document.getElementById('facebookLink')){
 
     document.getElementById('facebookLink').value =
@@ -160,7 +159,6 @@ async function loadWebsiteSettings(){
 
   }
 
-  // HERO BACKGROUND
   if(document.getElementById('heroBackground')){
 
     document.getElementById('heroBackground').value =
@@ -168,7 +166,7 @@ async function loadWebsiteSettings(){
 
   }
 
-  // LOGO PREVIEW
+  // LOGO
   if(data.logo_url){
 
     const logoPreview =
@@ -188,10 +186,6 @@ async function loadWebsiteSettings(){
 // ======================================
 
 async function updateWebsiteSettings(){
-
-  // ======================================
-  // GET VALUES
-  // ======================================
 
   const churchName =
     document.getElementById('churchName').value;
@@ -232,10 +226,7 @@ async function updateWebsiteSettings(){
   const heroBackground =
     document.getElementById('heroBackground')?.value || '';
 
-  // ======================================
   // LOGO
-  // ======================================
-
   const logoFile =
     document.getElementById('logoInput').files[0];
 
@@ -248,10 +239,7 @@ async function updateWebsiteSettings(){
 
   }
 
-  // ======================================
   // UPDATE DATA
-  // ======================================
-
   const updateData = {
 
     church_name:churchName,
@@ -276,17 +264,13 @@ async function updateWebsiteSettings(){
 
   };
 
-  // ONLY UPDATE LOGO IF NEW
+  // UPDATE LOGO ONLY IF NEW
   if(logoUrl){
 
     updateData.logo_url =
       logoUrl;
 
   }
-
-  // ======================================
-  // UPDATE DATABASE
-  // ======================================
 
   const { error } =
     await supabaseClient
@@ -370,6 +354,106 @@ async function createSermon(){
   document.getElementById('sermonVideo').value = '';
   document.getElementById('sermonImage').value = '';
 
+  loadSermonsAdmin();
+
+  refreshPreview();
+
+}
+
+// ======================================
+// LOAD SERMONS ADMIN
+// ======================================
+
+async function loadSermonsAdmin(){
+
+  const container =
+    document.getElementById('sermonsAdminList');
+
+  if(!container) return;
+
+  const { data, error } =
+    await supabaseClient
+      .from('sermons')
+      .select('*')
+      .order('created_at', {
+        ascending:false
+      });
+
+  if(error){
+
+    console.error(error);
+
+    return;
+
+  }
+
+  container.innerHTML = '';
+
+  data.forEach((sermon)=>{
+
+    container.innerHTML += `
+
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
+
+        <img
+          src="${sermon.image_url}"
+          class="w-full h-52 object-cover rounded-2xl"
+        />
+
+        <p class="text-yellow-400 text-sm uppercase tracking-[0.2em] mt-5">
+          ${sermon.category || ''}
+        </p>
+
+        <h3 class="text-2xl font-black mt-3">
+          ${sermon.title || ''}
+        </h3>
+
+        <button
+          onclick="deleteSermon(${sermon.id})"
+          class="mt-6 bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl transition"
+        >
+          Delete Sermon
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+// ======================================
+// DELETE SERMON
+// ======================================
+
+async function deleteSermon(id){
+
+  const confirmDelete =
+    confirm('Delete this sermon?');
+
+  if(!confirmDelete) return;
+
+  const { error } =
+    await supabaseClient
+      .from('sermons')
+      .delete()
+      .eq('id', id);
+
+  if(error){
+
+    console.error(error);
+
+    alert('Failed to delete sermon');
+
+    return;
+
+  }
+
+  alert('Sermon deleted');
+
+  loadSermonsAdmin();
+
   refreshPreview();
 
 }
@@ -420,10 +504,109 @@ async function createEvent(){
 
   alert('Event created successfully!');
 
-  // CLEAR INPUTS
+  // CLEAR
   document.getElementById('eventTitle').value = '';
   document.getElementById('eventDate').value = '';
   document.getElementById('eventDescription').value = '';
+
+  loadEventsAdmin();
+
+  refreshPreview();
+
+}
+
+// ======================================
+// LOAD EVENTS ADMIN
+// ======================================
+
+async function loadEventsAdmin(){
+
+  const container =
+    document.getElementById('eventsAdminList');
+
+  if(!container) return;
+
+  const { data, error } =
+    await supabaseClient
+      .from('events')
+      .select('*')
+      .order('created_at', {
+        ascending:false
+      });
+
+  if(error){
+
+    console.error(error);
+
+    return;
+
+  }
+
+  container.innerHTML = '';
+
+  data.forEach((event)=>{
+
+    container.innerHTML += `
+
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
+
+        <p class="text-yellow-400 text-sm uppercase tracking-[0.2em]">
+          ${event.event_date || ''}
+        </p>
+
+        <h3 class="text-2xl font-black mt-3">
+          ${event.title || ''}
+        </h3>
+
+        <p class="text-zinc-400 mt-4 leading-relaxed">
+          ${event.description || ''}
+        </p>
+
+        <button
+          onclick="deleteEvent(${event.id})"
+          class="mt-6 bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl transition"
+        >
+          Delete Event
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+// ======================================
+// DELETE EVENT
+// ======================================
+
+async function deleteEvent(id){
+
+  const confirmDelete =
+    confirm('Delete this event?');
+
+  if(!confirmDelete) return;
+
+  const { error } =
+    await supabaseClient
+      .from('events')
+      .delete()
+      .eq('id', id);
+
+  if(error){
+
+    console.error(error);
+
+    alert('Failed to delete event');
+
+    return;
+
+  }
+
+  alert('Event deleted');
+
+  loadEventsAdmin();
 
   refreshPreview();
 
@@ -480,6 +663,105 @@ async function createMinistry(){
   document.getElementById('ministryTitle').value = '';
   document.getElementById('ministryDescription').value = '';
 
+  loadMinistriesAdmin();
+
+  refreshPreview();
+
+}
+
+// ======================================
+// LOAD MINISTRIES ADMIN
+// ======================================
+
+async function loadMinistriesAdmin(){
+
+  const container =
+    document.getElementById('ministriesAdminList');
+
+  if(!container) return;
+
+  const { data, error } =
+    await supabaseClient
+      .from('ministries')
+      .select('*')
+      .order('created_at', {
+        ascending:false
+      });
+
+  if(error){
+
+    console.error(error);
+
+    return;
+
+  }
+
+  container.innerHTML = '';
+
+  data.forEach((ministry)=>{
+
+    container.innerHTML += `
+
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
+
+        <div class="text-5xl">
+          ${ministry.icon || '✨'}
+        </div>
+
+        <h3 class="text-2xl font-black mt-5">
+          ${ministry.title || ''}
+        </h3>
+
+        <p class="text-zinc-400 mt-4 leading-relaxed">
+          ${ministry.description || ''}
+        </p>
+
+        <button
+          onclick="deleteMinistry(${ministry.id})"
+          class="mt-6 bg-red-500 hover:bg-red-600 text-white px-5 py-3 rounded-2xl transition"
+        >
+          Delete Ministry
+        </button>
+
+      </div>
+
+    `;
+
+  });
+
+}
+
+// ======================================
+// DELETE MINISTRY
+// ======================================
+
+async function deleteMinistry(id){
+
+  const confirmDelete =
+    confirm('Delete this ministry?');
+
+  if(!confirmDelete) return;
+
+  const { error } =
+    await supabaseClient
+      .from('ministries')
+      .delete()
+      .eq('id', id);
+
+  if(error){
+
+    console.error(error);
+
+    alert('Failed to delete ministry');
+
+    return;
+
+  }
+
+  alert('Ministry deleted');
+
+  loadMinistriesAdmin();
+
   refreshPreview();
 
 }
@@ -489,3 +771,6 @@ async function createMinistry(){
 // ======================================
 
 loadWebsiteSettings();
+loadSermonsAdmin();
+loadEventsAdmin();
+loadMinistriesAdmin();
