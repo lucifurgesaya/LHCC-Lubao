@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>
+    LHCC CMS Dashboard
+  </title>
+
+  <!-- TAB LOGO -->
+  <link rel="icon" type="image/x-icon" href="logo.ico">
+
+  <!-- TAILWIND -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <!-- FONT -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    *{
+      font-family:'Inter', sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f5f5f5;
+      overflow-x:hidden;
+    }
+
+    .card{
+      background:white;
+      border-radius:32px;
+      padding:32px;
+      box-shadow:0 10px 40px rgba(0,0,0,0.05);
+    }
+
+    .glass{
+      backdrop-filter:blur(20px);
+      background:rgba(255,255,255,0.7);
+    }
+
+    textarea{
+      resize:none;
+    }
+
+    iframe{
+      border:none;
+    }
+
+    .preview-image{
+      width:100%;
+      height:260px;
+      object-fit:cover;
+      border-radius:24px;
+      margin-top:20px;
+      border:1px solid #e4e4e7;
+    }
+
+  </style>
+
+</head>
+
+<body class="min-h-screen text-zinc-900">
+
+  <!-- NAVBAR -->
+  <nav class="sticky top-0 z-50 border-b border-zinc-200 glass">
+
+    <div class="max-w-[1700px] mx-auto px-6 py-5 flex justify-between items-center">
+
+      <!-- LEFT -->
+      <div>
+
+        <h1 class="text-3xl font-black">
+          LHCC CMS Dashboard
+        </h1>
+
+        <p class="text-zinc-500 text-sm">
+          Lord of the Harvest Christian Church
+        </p>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="flex gap-4">
+
+        <a
+          href="index.html"
+          target="_blank"
+          class="bg-white border border-zinc-300 px-6 py-3 rounded-2xl hover:bg-zinc-100 transition font-semibold"
+        >
+          Open Website
+        </a>
+
+        <button
+          onclick="refreshPreview()"
+          class="bg-black text-white px-6 py-3 rounded-2xl hover:scale-105 transition"
+        >
+          Refresh Preview
+        </button>
+
+      </div>
+
+    </div>
+
+  </nav>
+
+  <!-- MAIN -->
+  <main class="max-w-[1700px] mx-auto px-6 py-10">
+
+    <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+
+      <!-- LEFT -->
+      <div class="space-y-10">
+
+        <!-- WEBSITE SETTINGS -->
+        <section class="card">
+
+          <div class="mb-10">
+
+            <h2 class="text-4xl font-black">
+              Website Settings
+            </h2>
+
+            <p class="text-zinc-500 mt-2">
+              Manage church website contents.
+            </p>
+
+          </div>
+
+          <div class="space-y-6">
+
+            <!-- CHURCH NAME -->
+            <div>
+
+              <label class="font-semibold">
+                Church Name
+              </label>
+
+              <input
+                id="churchName"
+                type="text"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              />
+
+            </div>
+
+            <!-- SUBTITLE -->
+            <div>
+
+              <label class="font-semibold">
+                Church Subtitle
+              </label>
+
+              <input
+                id="churchSubtitle"
+                type="text"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              />
+
+            </div>
+
+            <!-- HERO TITLE -->
+            <div>
+
+              <label class="font-semibold">
+                Hero Title
+              </label>
+
+              <textarea
+                id="heroTitle"
+                rows="4"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              ></textarea>
+
+            </div>
+
+            <!-- HERO DESCRIPTION -->
+            <div>
+
+              <label class="font-semibold">
+                Hero Description
+              </label>
+
+              <textarea
+                id="heroDescription"
+                rows="6"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              ></textarea>
+
+            </div>
+
+            <!-- ABOUT TITLE -->
+            <div>
+
+              <label class="font-semibold">
+                About Title
+              </label>
+
+              <input
+                id="aboutTitle"
+                type="text"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              />
+
+            </div>
+
+            <!-- ABOUT DESCRIPTION -->
+            <div>
+
+              <label class="font-semibold">
+                About Description
+              </label>
+
+              <textarea
+                id="aboutDescription"
+                rows="6"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              ></textarea>
+
+            </div>
+
+            <!-- SERVICES -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+              <div>
+
+                <label class="font-semibold">
+                  Sunday Service
+                </label>
+
+                <input
+                  id="sundayService"
+                  type="text"
+                  class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+                />
+
+              </div>
+
+              <div>
+
+                <label class="font-semibold">
+                  Midweek Service
+                </label>
+
+                <input
+                  id="midweekService"
+                  type="text"
+                  class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+                />
+
+              </div>
+
+            </div>
+
+            <!-- FOOTER -->
+            <div>
+
+              <label class="font-semibold">
+                Footer Text
+              </label>
+
+              <input
+                id="footerText"
+                type="text"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4"
+              />
+
+            </div>
+
+            <!-- LOGO -->
+            <div>
+
+              <label class="font-semibold">
+                Upload Logo
+              </label>
+
+              <input
+                id="logoInput"
+                type="file"
+                accept="image/*"
+                onchange="previewLogo(event)"
+                class="w-full mt-2 border border-zinc-300 rounded-2xl p-4 bg-white"
+              />
+
+              <img
+                id="logoPreview"
+                class="preview-image hidden"
+              />
+
+            </div>
+
+            <!-- SAVE -->
+            <button
+              onclick="updateWebsiteSettings()"
+              class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition"
+            >
+              Save Website Settings
+            </button>
+
+          </div>
+
+        </section>
+
+        <!-- CREATE SERMON -->
+        <section class="card">
+
+          <div class="mb-10">
+
+            <h2 class="text-4xl font-black">
+              Create Sermon
+            </h2>
+
+            <p class="text-zinc-500 mt-2">
+              Upload sermons and teachings.
+            </p>
+
+          </div>
+
+          <div class="space-y-6">
+
+            <input
+              id="sermonTitle"
+              type="text"
+              placeholder="Sermon Title"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            />
+
+            <input
+              id="sermonCategory"
+              type="text"
+              placeholder="Category"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            />
+
+            <input
+              id="sermonVideo"
+              type="text"
+              placeholder="YouTube Link"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            />
+
+            <input
+              id="sermonImage"
+              type="file"
+              accept="image/*"
+              class="w-full border border-zinc-300 rounded-2xl p-4 bg-white"
+            />
+
+            <button
+              onclick="createSermon()"
+              class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition"
+            >
+              Publish Sermon
+            </button>
+
+          </div>
+
+        </section>
+
+        <!-- CREATE EVENT -->
+        <section class="card">
+
+          <div class="mb-10">
+
+            <h2 class="text-4xl font-black">
+              Create Event
+            </h2>
+
+            <p class="text-zinc-500 mt-2">
+              Add upcoming church events.
+            </p>
+
+          </div>
+
+          <div class="space-y-6">
+
+            <input
+              id="eventTitle"
+              type="text"
+              placeholder="Event Title"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            />
+
+            <input
+              id="eventDate"
+              type="text"
+              placeholder="June 25, 2026"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            />
+
+            <textarea
+              id="eventDescription"
+              rows="5"
+              placeholder="Event Description"
+              class="w-full border border-zinc-300 rounded-2xl p-4"
+            ></textarea>
+
+            <button
+              onclick="createEvent()"
+              class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition"
+            >
+              Publish Event
+            </button>
+
+          </div>
+
+        </section>
+
+      </div>
+
+      <!-- RIGHT -->
+      <div class="sticky top-28 h-[90vh]">
+
+        <div class="bg-white rounded-[2rem] border border-zinc-200 shadow-2xl overflow-hidden h-full">
+
+          <div class="flex items-center justify-between px-6 py-5 border-b border-zinc-200">
+
+            <div>
+
+              <h2 class="text-2xl font-black">
+                Live Website Preview
+              </h2>
+
+              <p class="text-zinc-500 text-sm">
+                Real-time frontend preview
+              </p>
+
+            </div>
+
+            <button
+              onclick="refreshPreview()"
+              class="bg-black text-white px-5 py-3 rounded-2xl"
+            >
+              Refresh
+            </button>
+
+          </div>
+
+          <iframe
+            id="previewFrame"
+            src="index.html"
+            class="w-full h-full bg-white"
+          ></iframe>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- ADMIN JS -->
+  <script src="admin.js"></script>
+
+</body>
+</html>
