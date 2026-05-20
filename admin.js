@@ -1,4 +1,6 @@
-
+// ======================================
+// SUPABASE
+// ======================================
 
 const SUPABASE_URL =
 "https://hhjvvxyulavdxhxcxkcz.supabase.co";
@@ -453,7 +455,7 @@ async function loadSermonsAdmin(){
 
     container.innerHTML += `
 
-      <div class="bg-[#181818] border border-white/10 rounded-3xl p-6">
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
 
         <img
           src="${sermon.image_url}"
@@ -508,7 +510,7 @@ async function loadEventsAdmin(){
 
     container.innerHTML += `
 
-      <div class="bg-[#181818] border border-white/10 rounded-3xl p-6">
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
 
         <p class="text-yellow-400 text-sm uppercase tracking-[0.2em]">
           ${event.event_date || ''}
@@ -562,7 +564,7 @@ async function loadMinistriesAdmin(){
 
     container.innerHTML += `
 
-      <div class="bg-[#181818] border border-white/10 rounded-3xl p-6">
+      <div class="bg-[#181818] text-white border border-white/10 rounded-3xl p-6">
 
         <div class="text-5xl">
           ${ministry.icon || '✨'}
@@ -656,4 +658,3 @@ loadWebsiteSettings();
 loadSermonsAdmin();
 loadEventsAdmin();
 loadMinistriesAdmin();
-```
