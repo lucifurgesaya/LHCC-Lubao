@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,88 +33,51 @@
       font-family:'Inter', sans-serif;
     }
 
-    html{
-      scroll-behavior:smooth;
-    }
-
     body{
-      background:#070707;
-      overflow-x:hidden;
+      background:#0f0f0f;
       color:white;
-    }
-
-    textarea{
-      resize:none;
-    }
-
-    iframe{
-      border:none;
+      overflow-x:hidden;
     }
 
     .glass{
       backdrop-filter:blur(20px);
-      background:rgba(255,255,255,0.05);
+      background:rgba(255,255,255,0.04);
     }
 
     .card{
 
-      background:#111111;
+      background:#181818;
       border:1px solid rgba(255,255,255,0.08);
 
       border-radius:32px;
 
       padding:32px;
-
-      box-shadow:
-      0 20px 60px rgba(0,0,0,0.45);
-
     }
 
     .input{
 
       width:100%;
-      margin-top:12px;
 
-      background:#181818;
+      background:#101010;
+
       border:1px solid rgba(255,255,255,0.08);
+
+      padding:18px;
+
+      border-radius:20px;
 
       color:white;
 
-      padding:18px;
-      border-radius:20px;
-
       outline:none;
+
+      transition:0.3s;
 
     }
 
     .input:focus{
 
       border-color:#facc15;
-      box-shadow:0 0 0 4px rgba(250,204,21,0.15);
-
-    }
-
-    .preview-image{
-      width:100%;
-      height:260px;
-      object-fit:cover;
-      border-radius:24px;
-      margin-top:20px;
-      border:1px solid rgba(255,255,255,0.08);
-    }
-
-    .glow{
-
-      position:fixed;
-      width:700px;
-      height:700px;
-
-      border-radius:999px;
-
-      filter:blur(140px);
-
-      z-index:0;
-      pointer-events:none;
+      box-shadow:0 0 0 3px rgba(250,204,21,0.2);
 
     }
 
@@ -121,15 +85,34 @@
 
       background:#facc15;
       color:black;
+      font-weight:800;
 
-      font-weight:900;
-
-      transition:0.3s ease;
-
+      transition:0.3s;
     }
 
     .gold-btn:hover{
-      transform:scale(1.03);
+
+      transform:translateY(-2px) scale(1.02);
+
+    }
+
+    .preview-image{
+
+      width:100%;
+      height:260px;
+
+      object-fit:cover;
+
+      border-radius:24px;
+
+      margin-top:20px;
+
+      border:1px solid rgba(255,255,255,0.1);
+
+    }
+
+    iframe{
+      border:none;
     }
 
   </style>
@@ -138,36 +121,29 @@
 
 <body>
 
-  <!-- GLOW -->
-  <div class="glow top-[-250px] left-[-250px] bg-yellow-400/10"></div>
-
-  <div class="glow bottom-[-250px] right-[-250px] bg-yellow-500/10"></div>
-
   <!-- NAVBAR -->
   <nav class="sticky top-0 z-50 border-b border-white/10 glass">
 
-    <div class="max-w-[1700px] mx-auto px-6 py-5 flex justify-between items-center">
+    <div class="max-w-[1800px] mx-auto px-6 py-5 flex justify-between items-center">
 
-      <!-- LEFT -->
       <div>
 
-        <h1 class="text-4xl font-black text-yellow-400">
-          LHCC CMS
-        </h1>
-
-        <p class="text-zinc-400 text-sm uppercase tracking-[0.3em] mt-1">
+        <p class="uppercase tracking-[0.4em] text-yellow-400 text-xs">
           Lord of the Harvest Christian Church
         </p>
 
+        <h1 class="text-4xl font-black mt-2">
+          CMS Dashboard
+        </h1>
+
       </div>
 
-      <!-- RIGHT -->
       <div class="flex gap-4">
 
         <a
           href="index.html"
           target="_blank"
-          class="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl hover:bg-white hover:text-black transition font-semibold"
+          class="bg-white/10 border border-white/10 px-6 py-3 rounded-2xl hover:bg-white/20 transition"
         >
           Open Website
         </a>
@@ -186,9 +162,9 @@
   </nav>
 
   <!-- MAIN -->
-  <main class="max-w-[1700px] mx-auto px-6 py-10 relative z-10">
+  <main class="max-w-[1800px] mx-auto px-6 py-10">
 
-    <div class="grid grid-cols-1 xl:grid-cols-2 gap-10">
+    <div class="grid xl:grid-cols-2 gap-10">
 
       <!-- LEFT -->
       <div class="space-y-10">
@@ -199,225 +175,117 @@
           <div class="mb-10">
 
             <p class="uppercase tracking-[0.3em] text-yellow-400 text-sm">
-              Church CMS
+              Website Settings
             </p>
 
             <h2 class="text-5xl font-black mt-4">
-              Website Settings
+              Church Website CMS
             </h2>
-
-            <p class="text-zinc-400 mt-4 text-lg">
-              Manage church website contents and worship experience.
-            </p>
 
           </div>
 
           <div class="space-y-6">
 
-            <!-- CHURCH NAME -->
-            <div>
+            <input
+              id="churchName"
+              type="text"
+              placeholder="Church Name"
+              class="input"
+            />
 
-              <label class="font-semibold">
-                Church Name
-              </label>
+            <input
+              id="churchSubtitle"
+              type="text"
+              placeholder="Church Subtitle"
+              class="input"
+            />
 
-              <input
-                id="churchName"
-                type="text"
-                class="input"
-              />
+            <textarea
+              id="heroTitle"
+              rows="4"
+              placeholder="Hero Title"
+              class="input"
+            ></textarea>
 
-            </div>
+            <textarea
+              id="heroDescription"
+              rows="6"
+              placeholder="Hero Description"
+              class="input"
+            ></textarea>
 
-            <!-- SUBTITLE -->
-            <div>
+            <input
+              id="aboutTitle"
+              type="text"
+              placeholder="About Title"
+              class="input"
+            />
 
-              <label class="font-semibold">
-                Church Subtitle
-              </label>
+            <textarea
+              id="aboutDescription"
+              rows="6"
+              placeholder="About Description"
+              class="input"
+            ></textarea>
 
-              <input
-                id="churchSubtitle"
-                type="text"
-                class="input"
-              />
-
-            </div>
-
-            <!-- HERO TITLE -->
-            <div>
-
-              <label class="font-semibold">
-                Hero Title
-              </label>
-
-              <textarea
-                id="heroTitle"
-                rows="4"
-                class="input"
-              ></textarea>
-
-            </div>
-
-            <!-- HERO DESCRIPTION -->
-            <div>
-
-              <label class="font-semibold">
-                Hero Description
-              </label>
-
-              <textarea
-                id="heroDescription"
-                rows="6"
-                class="input"
-              ></textarea>
-
-            </div>
-
-            <!-- HERO BG -->
-            <div>
-
-              <label class="font-semibold">
-                Hero Background Image URL
-              </label>
-
-              <input
-                id="heroBackground"
-                type="text"
-                class="input"
-              />
-
-            </div>
-
-            <!-- SOCIAL LINKS -->
-            <div class="grid md:grid-cols-3 gap-6">
-
-              <div>
-
-                <label class="font-semibold">
-                  Facebook Link
-                </label>
-
-                <input
-                  id="facebookLink"
-                  type="text"
-                  class="input"
-                />
-
-              </div>
-
-              <div>
-
-                <label class="font-semibold">
-                  YouTube Link
-                </label>
-
-                <input
-                  id="youtubeLink"
-                  type="text"
-                  class="input"
-                />
-
-              </div>
-
-              <div>
-
-                <label class="font-semibold">
-                  Email Address
-                </label>
-
-                <input
-                  id="emailLink"
-                  type="text"
-                  class="input"
-                />
-
-              </div>
-
-            </div>
-
-            <!-- ABOUT -->
-            <div>
-
-              <label class="font-semibold">
-                About Title
-              </label>
-
-              <input
-                id="aboutTitle"
-                type="text"
-                class="input"
-              />
-
-            </div>
-
-            <div>
-
-              <label class="font-semibold">
-                About Description
-              </label>
-
-              <textarea
-                id="aboutDescription"
-                rows="5"
-                class="input"
-              ></textarea>
-
-            </div>
-
-            <!-- SERVICES -->
             <div class="grid md:grid-cols-2 gap-6">
 
-              <div>
-
-                <label class="font-semibold">
-                  Sunday Service
-                </label>
-
-                <input
-                  id="sundayService"
-                  type="text"
-                  class="input"
-                />
-
-              </div>
-
-              <div>
-
-                <label class="font-semibold">
-                  Midweek Service
-                </label>
-
-                <input
-                  id="midweekService"
-                  type="text"
-                  class="input"
-                />
-
-              </div>
-
-            </div>
-
-            <!-- FOOTER -->
-            <div>
-
-              <label class="font-semibold">
-                Footer Text
-              </label>
+              <input
+                id="sundayService"
+                type="text"
+                placeholder="Sunday Service"
+                class="input"
+              />
 
               <input
-                id="footerText"
+                id="midweekService"
                 type="text"
+                placeholder="Midweek Service"
                 class="input"
               />
 
             </div>
+
+            <input
+              id="facebookLink"
+              type="text"
+              placeholder="Facebook Link"
+              class="input"
+            />
+
+            <input
+              id="youtubeLink"
+              type="text"
+              placeholder="YouTube Link"
+              class="input"
+            />
+
+            <input
+              id="emailLink"
+              type="text"
+              placeholder="Email Link"
+              class="input"
+            />
+
+            <input
+              id="heroBackground"
+              type="text"
+              placeholder="Hero Background Image URL"
+              class="input"
+            />
+
+            <input
+              id="footerText"
+              type="text"
+              placeholder="Footer Text"
+              class="input"
+            />
 
             <!-- LOGO -->
             <div>
 
-              <label class="font-semibold">
-                Upload Church Logo
+              <label class="text-sm text-zinc-400">
+                Upload Logo
               </label>
 
               <input
@@ -425,7 +293,7 @@
                 type="file"
                 accept="image/*"
                 onchange="previewLogo(event)"
-                class="input"
+                class="input mt-3"
               />
 
               <img
@@ -435,8 +303,8 @@
 
             </div>
 
-            <!-- SAVE -->
             <button
+              type="button"
               onclick="updateWebsiteSettings()"
               class="gold-btn w-full py-5 rounded-2xl text-lg"
             >
@@ -447,7 +315,7 @@
 
         </section>
 
-        <!-- CREATE SERMON -->
+        <!-- SERMONS -->
         <section class="card">
 
           <div class="mb-10">
@@ -493,6 +361,7 @@
             />
 
             <button
+              type="button"
               onclick="createSermon()"
               class="gold-btn w-full py-5 rounded-2xl text-lg"
             >
@@ -501,9 +370,22 @@
 
           </div>
 
+          <div class="mt-10">
+
+            <h3 class="text-2xl font-black mb-6">
+              Published Sermons
+            </h3>
+
+            <div
+              id="sermonsAdminList"
+              class="grid gap-6"
+            ></div>
+
+          </div>
+
         </section>
 
-        <!-- CREATE EVENT -->
+        <!-- EVENTS -->
         <section class="card">
 
           <div class="mb-10">
@@ -542,6 +424,7 @@
             ></textarea>
 
             <button
+              type="button"
               onclick="createEvent()"
               class="gold-btn w-full py-5 rounded-2xl text-lg"
             >
@@ -550,9 +433,22 @@
 
           </div>
 
+          <div class="mt-10">
+
+            <h3 class="text-2xl font-black mb-6">
+              Published Events
+            </h3>
+
+            <div
+              id="eventsAdminList"
+              class="grid gap-6"
+            ></div>
+
+          </div>
+
         </section>
 
-        <!-- CREATE MINISTRY -->
+        <!-- MINISTRIES -->
         <section class="card">
 
           <div class="mb-10">
@@ -591,6 +487,7 @@
             ></textarea>
 
             <button
+              type="button"
               onclick="createMinistry()"
               class="gold-btn w-full py-5 rounded-2xl text-lg"
             >
@@ -599,40 +496,51 @@
 
           </div>
 
+          <div class="mt-10">
+
+            <h3 class="text-2xl font-black mb-6">
+              Published Ministries
+            </h3>
+
+            <div
+              id="ministriesAdminList"
+              class="grid gap-6"
+            ></div>
+
+          </div>
+
         </section>
 
       </div>
 
       <!-- RIGHT -->
-      <div class="sticky top-28 h-[90vh]">
+      <div class="sticky top-28 h-[92vh]">
 
-        <div class="bg-[#111111] border border-white/10 rounded-[2rem] overflow-hidden h-full shadow-2xl">
+        <div class="bg-[#181818] border border-white/10 rounded-[2rem] overflow-hidden h-full">
 
-          <!-- TOP -->
           <div class="flex items-center justify-between px-6 py-5 border-b border-white/10">
 
             <div>
 
-              <p class="uppercase tracking-[0.3em] text-yellow-400 text-sm">
-                Live Preview
-              </p>
-
-              <h2 class="text-3xl font-black mt-2">
-                Website Preview
+              <h2 class="text-2xl font-black">
+                Live Website Preview
               </h2>
+
+              <p class="text-zinc-400 text-sm">
+                Real-time LHCC frontend preview
+              </p>
 
             </div>
 
             <button
               onclick="refreshPreview()"
-              class="gold-btn px-6 py-3 rounded-2xl"
+              class="gold-btn px-5 py-3 rounded-2xl"
             >
               Refresh
             </button>
 
           </div>
 
-          <!-- IFRAME -->
           <iframe
             id="previewFrame"
             src="index.html"
@@ -652,3 +560,4 @@
 
 </body>
 </html>
+```
