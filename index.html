@@ -107,7 +107,7 @@
 <body>
 
   <!-- NAVBAR -->
-  <nav class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-xl text-white transition-all duration-500">
+  <nav class="fixed top-0 z-50 w-full border-b border-white/10 bg-black/30 backdrop-blur-xl text-white">
 
     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
 
@@ -115,17 +115,24 @@
       <div class="flex items-center gap-4">
 
         <img
+          id="churchLogo"
           src="logo.png"
           class="h-14 w-14 object-cover rounded-full border border-white/20"
         />
 
         <div>
 
-          <h1 class="text-2xl font-black tracking-wide">
+          <h1
+            id="churchName"
+            class="text-2xl font-black tracking-wide"
+          >
             Lord of the Harvest
           </h1>
 
-          <p class="text-xs uppercase tracking-[0.3em] text-zinc-300">
+          <p
+            id="churchSubtitle"
+            class="text-xs uppercase tracking-[0.3em] text-zinc-300"
+          >
             Christian Church
           </p>
 
@@ -180,7 +187,10 @@
 
         <div class="space-y-6">
 
-          <h1 class="text-6xl md:text-8xl font-black leading-none">
+          <h1
+            id="heroTitle"
+            class="text-6xl md:text-8xl font-black leading-none"
+          >
             Find Hope,
             <br>
             Faith,
@@ -188,8 +198,12 @@
             and Purpose.
           </h1>
 
-          <p class="max-w-2xl text-xl text-zinc-200 leading-relaxed">
-            A Christ-centered church where lives are transformed through worship, prayer, community, and the power of God's Word.
+          <p
+            id="heroDescription"
+            class="max-w-2xl text-xl text-zinc-200 leading-relaxed"
+          >
+            A Christ-centered church where lives are transformed through worship,
+            prayer, community, and the power of God's Word.
           </p>
 
         </div>
@@ -245,7 +259,10 @@
                 Main Service
               </p>
 
-              <h3 class="text-4xl font-black mt-2">
+              <h3
+                id="sundayService"
+                class="text-4xl font-black mt-2"
+              >
                 Sunday • 9:00 AM
               </h3>
 
@@ -257,7 +274,10 @@
                 Midweek Prayer
               </p>
 
-              <h3 class="text-4xl font-black mt-2">
+              <h3
+                id="midweekService"
+                class="text-4xl font-black mt-2"
+              >
                 Wednesday • 7:00 PM
               </h3>
 
@@ -310,7 +330,10 @@
           About Our Church
         </p>
 
-        <h2 class="text-6xl font-black mt-6 leading-tight">
+        <h2
+          id="aboutTitle"
+          class="text-6xl font-black mt-6 leading-tight"
+        >
           Building Lives Through Jesus Christ.
         </h2>
 
@@ -318,41 +341,10 @@
 
       <div class="space-y-6 text-lg leading-relaxed text-zinc-600">
 
-        <p>
-          Our church exists to share the Gospel, serve the community, and help people grow deeper in their relationship with Jesus.
+        <p id="aboutDescription">
+          Our church exists to share the Gospel, serve the community,
+          and help people grow deeper in their relationship with Jesus.
         </p>
-
-        <p>
-          Whether you are new to faith or have followed Christ for years, you are welcome here.
-        </p>
-
-        <div class="grid grid-cols-2 gap-6 pt-6">
-
-          <div class="bg-white rounded-3xl p-8 shadow-lg">
-
-            <h3 class="text-5xl font-black">
-              500+
-            </h3>
-
-            <p class="text-zinc-500 mt-2">
-              Members
-            </p>
-
-          </div>
-
-          <div class="bg-white rounded-3xl p-8 shadow-lg">
-
-            <h3 class="text-5xl font-black">
-              15+
-            </h3>
-
-            <p class="text-zinc-500 mt-2">
-              Ministries
-            </p>
-
-          </div>
-
-        </div>
 
       </div>
 
@@ -380,59 +372,35 @@
       <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
 
         <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
-
           <div class="text-5xl">🎵</div>
-
-          <h3 class="text-3xl font-black mt-6">
-            Worship Team
-          </h3>
-
+          <h3 class="text-3xl font-black mt-6">Worship Team</h3>
           <p class="text-zinc-600 mt-4 leading-relaxed">
             Leading the church into God's presence through worship.
           </p>
-
         </div>
 
         <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
-
           <div class="text-5xl">👨‍👩‍👧</div>
-
-          <h3 class="text-3xl font-black mt-6">
-            Family Ministry
-          </h3>
-
+          <h3 class="text-3xl font-black mt-6">Family Ministry</h3>
           <p class="text-zinc-600 mt-4 leading-relaxed">
             Supporting marriages, parents, and families.
           </p>
-
         </div>
 
         <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
-
           <div class="text-5xl">🔥</div>
-
-          <h3 class="text-3xl font-black mt-6">
-            Youth Ministry
-          </h3>
-
+          <h3 class="text-3xl font-black mt-6">Youth Ministry</h3>
           <p class="text-zinc-600 mt-4 leading-relaxed">
             Empowering the next generation for Christ.
           </p>
-
         </div>
 
         <div class="bg-[#fafafa] rounded-[2rem] p-8 border border-zinc-200 card-hover">
-
           <div class="text-5xl">🙏</div>
-
-          <h3 class="text-3xl font-black mt-6">
-            Prayer Ministry
-          </h3>
-
+          <h3 class="text-3xl font-black mt-6">Prayer Ministry</h3>
           <p class="text-zinc-600 mt-4 leading-relaxed">
             Standing in prayer and intercession together.
           </p>
-
         </div>
 
       </div>
@@ -460,40 +428,13 @@
 
         </div>
 
-        <p class="max-w-xl text-zinc-300 text-lg leading-relaxed">
-          Watch inspiring sermons and teachings designed to strengthen your faith and encourage your walk with God.
-        </p>
-
       </div>
 
-      <div class="grid lg:grid-cols-3 gap-8">
-
-        <!-- CARD -->
-        <div class="bg-zinc-900 rounded-[2rem] overflow-hidden card-hover">
-
-          <img
-            src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?q=80&w=1974&auto=format&fit=crop"
-            class="h-64 w-full object-cover"
-          />
-
-          <div class="p-8">
-
-            <p class="text-zinc-400 text-sm uppercase tracking-[0.2em]">
-              Sunday Message
-            </p>
-
-            <h3 class="text-3xl font-black mt-4">
-              Walking In Faith
-            </h3>
-
-            <button class="mt-8 text-yellow-400 font-semibold uppercase tracking-[0.2em]">
-              Watch Sermon →
-            </button>
-
-          </div>
-
-        </div>
-
+      <!-- DYNAMIC SERMONS -->
+      <div
+        id="sermonsContainer"
+        class="grid lg:grid-cols-3 gap-8"
+      >
       </div>
 
     </div>
@@ -517,54 +458,12 @@
 
       </div>
 
-      <div class="space-y-8">
-
-        <div class="bg-white rounded-[2rem] p-10 shadow-lg flex flex-col lg:flex-row justify-between gap-10 items-center card-hover">
-
-          <div>
-
-            <p class="text-zinc-500 uppercase tracking-[0.2em] text-sm">
-              June 25, 2026
-            </p>
-
-            <h3 class="text-4xl font-black mt-4">
-              Worship Night Revival
-            </h3>
-
-          </div>
-
-          <button class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition">
-            Learn More
-          </button>
-
-        </div>
-
+      <!-- DYNAMIC EVENTS -->
+      <div
+        id="eventsContainer"
+        class="space-y-8"
+      >
       </div>
-
-    </div>
-
-  </section>
-
-  <!-- MISSION -->
-  <section class="py-32 bg-gradient-to-r from-black to-zinc-900 text-white text-center">
-
-    <div class="max-w-5xl mx-auto px-6">
-
-      <p class="uppercase tracking-[0.3em] text-zinc-400 text-sm">
-        Our Mission
-      </p>
-
-      <h2 class="text-6xl font-black mt-6 leading-tight">
-        Reaching Souls.
-        <br>
-        Building Faith.
-        <br>
-        Glorifying Jesus.
-      </h2>
-
-      <p class="text-zinc-300 text-xl mt-10 leading-relaxed">
-        We exist to bring people into a life-changing relationship with Jesus Christ through worship, discipleship, and the power of God's Word.
-      </p>
 
     </div>
 
@@ -584,24 +483,9 @@
       </h2>
 
       <p class="text-zinc-600 text-xl mt-8 leading-relaxed max-w-3xl mx-auto">
-        Join us this Sunday and experience worship, community, and God's presence together.
+        Join us this Sunday and experience worship, community,
+        and God's presence together.
       </p>
-
-      <div class="flex flex-wrap justify-center gap-6 mt-12">
-
-        <button class="bg-black text-white px-8 py-4 rounded-2xl hover:scale-105 transition">
-          Facebook Page
-        </button>
-
-        <button class="border border-zinc-300 px-8 py-4 rounded-2xl hover:bg-zinc-100 transition">
-          YouTube Channel
-        </button>
-
-        <button class="border border-zinc-300 px-8 py-4 rounded-2xl hover:bg-zinc-100 transition">
-          Email Us
-        </button>
-
-      </div>
 
     </div>
 
@@ -614,11 +498,17 @@
 
       <div>
 
-        <h3 class="text-2xl font-black">
+        <h3
+          id="footerChurchName"
+          class="text-2xl font-black"
+        >
           Lord of the Harvest Christian Church
         </h3>
 
-        <p class="text-zinc-400 mt-2">
+        <p
+          id="footerText"
+          class="text-zinc-400 mt-2"
+        >
           Sharing the love of Jesus Christ to the world.
         </p>
 
@@ -632,195 +522,196 @@
 
   </footer>
 
-  <!-- PARALLAX -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <!-- SUPABASE -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-<script>
+  <script>
 
-  const SUPABASE_URL =
-  "https://hhjvvxyulavdxhxcxkcz.supabase.co";
+    const SUPABASE_URL =
+    "https://hhjvvxyulavdxhxcxkcz.supabase.co";
 
-  const SUPABASE_ANON_KEY =
-  "sb_publishable_GV8w_hjaScQAhj52JHJGIQ_RRrisZha";
+    const SUPABASE_ANON_KEY =
+    "sb_publishable_GV8w_hjaScQAhj52JHJGIQ_RRrisZha";
 
-  const supabaseClient =
-    supabase.createClient(
-      SUPABASE_URL,
-      SUPABASE_ANON_KEY
-    );
+    const supabaseClient =
+      supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_ANON_KEY
+      );
 
-  // LOAD WEBSITE SETTINGS
-  async function loadWebsiteSettings(){
+    // LOAD WEBSITE SETTINGS
+    async function loadWebsiteSettings(){
 
-    const { data, error } =
-      await supabaseClient
-        .from('website_settings')
-        .select('*')
-        .limit(1)
-        .single();
+      const { data, error } =
+        await supabaseClient
+          .from('website_settings')
+          .select('*')
+          .eq('id', 1)
+          .single();
 
-    if(error){
-      console.error(error);
-      return;
+      if(error){
+        console.error(error);
+        return;
+      }
+
+      // NAVBAR
+      document.getElementById('churchName').innerText =
+        data.church_name || '';
+
+      document.getElementById('churchSubtitle').innerText =
+        data.church_subtitle || '';
+
+      // HERO
+      document.getElementById('heroTitle').innerHTML =
+        data.hero_title || '';
+
+      document.getElementById('heroDescription').innerText =
+        data.hero_description || '';
+
+      // ABOUT
+      document.getElementById('aboutTitle').innerText =
+        data.about_title || '';
+
+      document.getElementById('aboutDescription').innerText =
+        data.about_description || '';
+
+      // SERVICE TIMES
+      document.getElementById('sundayService').innerText =
+        data.sunday_service || '';
+
+      document.getElementById('midweekService').innerText =
+        data.midweek_service || '';
+
+      // FOOTER
+      document.getElementById('footerChurchName').innerText =
+        data.church_name || '';
+
+      document.getElementById('footerText').innerText =
+        data.footer_text || '';
+
+      // LOGO
+      if(data.logo_url){
+
+        document.getElementById('churchLogo').src =
+          data.logo_url;
+
+      }
+
     }
 
-    // CHURCH NAME
-    document.getElementById('churchName').innerText =
-      data.church_name || '';
+    // LOAD SERMONS
+    async function loadSermons(){
 
-    // SUBTITLE
-    document.getElementById('churchSubtitle').innerText =
-      data.church_subtitle || '';
+      const { data, error } =
+        await supabaseClient
+          .from('sermons')
+          .select('*')
+          .order('created_at', {
+            ascending:false
+          });
 
-    // HERO TITLE
-    document.getElementById('heroTitle').innerText =
-      data.hero_title || '';
+      if(error){
+        console.error(error);
+        return;
+      }
 
-    // HERO DESCRIPTION
-    document.getElementById('heroDescription').innerText =
-      data.hero_description || '';
+      const sermonsContainer =
+        document.getElementById('sermonsContainer');
 
-    // ABOUT TITLE
-    document.getElementById('aboutTitle').innerText =
-      data.about_title || '';
+      sermonsContainer.innerHTML = '';
 
-    // ABOUT DESCRIPTION
-    document.getElementById('aboutDescription').innerText =
-      data.about_description || '';
+      data.forEach((sermon)=>{
 
-    // SERVICE TIMES
-    document.getElementById('sundayService').innerText =
-      data.sunday_service || '';
+        sermonsContainer.innerHTML += `
 
-    document.getElementById('midweekService').innerText =
-      data.midweek_service || '';
+          <div class="bg-zinc-900 rounded-[2rem] overflow-hidden card-hover">
 
-    // FOOTER
-    document.getElementById('footerText').innerText =
-      data.footer_text || '';
+            <img
+              src="${sermon.image_url}"
+              class="h-64 w-full object-cover"
+            />
 
-    // LOGO
-    if(data.logo_url){
+            <div class="p-8">
 
-      document.getElementById('churchLogo').src =
-        data.logo_url;
+              <p class="text-zinc-400 text-sm uppercase tracking-[0.2em]">
+                ${sermon.category || ''}
+              </p>
 
-    }
+              <h3 class="text-3xl font-black mt-4">
+                ${sermon.title || ''}
+              </h3>
 
-  }
+              <a
+                href="${sermon.video_link || '#'}"
+                target="_blank"
+                class="inline-block mt-8 text-yellow-400 font-semibold uppercase tracking-[0.2em]"
+              >
+                Watch Sermon →
+              </a>
 
-  // LOAD SERMONS
-  async function loadSermons(){
-
-    const { data, error } =
-      await supabaseClient
-        .from('sermons')
-        .select('*')
-        .order('created_at', {
-          ascending:false
-        });
-
-    if(error){
-      console.error(error);
-      return;
-    }
-
-    const sermonsContainer =
-      document.getElementById('sermonsContainer');
-
-    sermonsContainer.innerHTML = '';
-
-    data.forEach((sermon)=>{
-
-      sermonsContainer.innerHTML += `
-
-        <div class="bg-zinc-900 rounded-[2rem] overflow-hidden">
-
-          <img
-            src="${sermon.image_url}"
-            class="h-64 w-full object-cover"
-          />
-
-          <div class="p-8">
-
-            <p class="text-zinc-400 text-sm uppercase tracking-[0.2em]">
-              ${sermon.category || ''}
-            </p>
-
-            <h3 class="text-3xl font-black mt-4">
-              ${sermon.title || ''}
-            </h3>
-
-            <a
-              href="${sermon.video_link || '#'}"
-              target="_blank"
-              class="inline-block mt-8 text-yellow-400 font-semibold uppercase tracking-[0.2em]"
-            >
-              Watch Sermon →
-            </a>
+            </div>
 
           </div>
 
-        </div>
+        `;
 
-      `;
+      });
 
-    });
-
-  }
-
-  // LOAD EVENTS
-  async function loadEvents(){
-
-    const { data, error } =
-      await supabaseClient
-        .from('events')
-        .select('*')
-        .order('created_at', {
-          ascending:false
-        });
-
-    if(error){
-      console.error(error);
-      return;
     }
 
-    const eventsContainer =
-      document.getElementById('eventsContainer');
+    // LOAD EVENTS
+    async function loadEvents(){
 
-    eventsContainer.innerHTML = '';
+      const { data, error } =
+        await supabaseClient
+          .from('events')
+          .select('*')
+          .order('created_at', {
+            ascending:false
+          });
 
-    data.forEach((event)=>{
+      if(error){
+        console.error(error);
+        return;
+      }
 
-      eventsContainer.innerHTML += `
+      const eventsContainer =
+        document.getElementById('eventsContainer');
 
-        <div class="bg-white rounded-[2rem] p-10 shadow-lg">
+      eventsContainer.innerHTML = '';
 
-          <p class="text-zinc-500 uppercase tracking-[0.2em] text-sm">
-            ${event.event_date || ''}
-          </p>
+      data.forEach((event)=>{
 
-          <h3 class="text-4xl font-black mt-4">
-            ${event.title || ''}
-          </h3>
+        eventsContainer.innerHTML += `
 
-          <p class="mt-4 text-zinc-600 leading-relaxed">
-            ${event.description || ''}
-          </p>
+          <div class="bg-white rounded-[2rem] p-10 shadow-lg card-hover">
 
-        </div>
+            <p class="text-zinc-500 uppercase tracking-[0.2em] text-sm">
+              ${event.event_date || ''}
+            </p>
 
-      `;
+            <h3 class="text-4xl font-black mt-4">
+              ${event.title || ''}
+            </h3>
 
-    });
+            <p class="mt-4 text-zinc-600 leading-relaxed">
+              ${event.description || ''}
+            </p>
 
-  }
+          </div>
 
-  loadWebsiteSettings();
-  loadSermons();
-  loadEvents();
+        `;
 
-</script>
+      });
+
+    }
+
+    // INITIALIZE
+    loadWebsiteSettings();
+    loadSermons();
+    loadEvents();
+
+  </script>
 
 </body>
 </html>
