@@ -142,8 +142,6 @@ async function loadWebsiteSettings(){
   setValue('youtubeLink', data.youtube_link);
   setValue('emailLink', data.email_link);
 
-  setValue('heroBackground', data.hero_background);
-
   if(data.logo_url){
 
     const logoPreview =
@@ -168,6 +166,7 @@ async function loadWebsiteSettings(){
 
 async function updateWebsiteSettings(){
 
+  // LOGO
   const logoFile =
     document.getElementById('logoInput')?.files[0];
 
@@ -177,6 +176,19 @@ async function updateWebsiteSettings(){
 
     logoUrl =
       await uploadImage(logoFile);
+
+  }
+
+  // HERO BACKGROUND
+  const heroBackgroundFile =
+    document.getElementById('heroBackgroundInput')?.files[0];
+
+  let heroBackgroundUrl = null;
+
+  if(heroBackgroundFile){
+
+    heroBackgroundUrl =
+      await uploadImage(heroBackgroundFile);
 
   }
 
@@ -216,17 +228,23 @@ async function updateWebsiteSettings(){
       document.getElementById('youtubeLink')?.value || '',
 
     email_link:
-      document.getElementById('emailLink')?.value || '',
-
-    hero_background:
-      document.getElementById('heroBackground')?.value || ''
+      document.getElementById('emailLink')?.value || ''
 
   };
 
+  // SAVE LOGO
   if(logoUrl){
 
     updateData.logo_url =
       logoUrl;
+
+  }
+
+  // SAVE HERO BACKGROUND
+  if(heroBackgroundUrl){
+
+    updateData.hero_background =
+      heroBackgroundUrl;
 
   }
 
