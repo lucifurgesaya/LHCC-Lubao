@@ -633,19 +633,194 @@
   </footer>
 
   <!-- PARALLAX -->
-  <script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-    window.addEventListener('scroll', ()=>{
+<script>
 
-      const scrollY = window.scrollY;
+  const SUPABASE_URL =
+  "YOUR_SUPABASE_URL";
 
-      document.querySelector('.hero-bg')
-        .style.backgroundPositionY =
-        `${scrollY * 0.5}px`;
+  const SUPABASE_ANON_KEY =
+  "YOUR_SUPABASE_ANON_KEY";
+
+  const supabaseClient =
+    supabase.createClient(
+      SUPABASE_URL,
+      SUPABASE_ANON_KEY
+    );
+
+  // LOAD WEBSITE SETTINGS
+  async function loadWebsiteSettings(){
+
+    const { data, error } =
+      await supabaseClient
+        .from('website_settings')
+        .select('*')
+        .limit(1)
+        .single();
+
+    if(error){
+      console.error(error);
+      return;
+    }
+
+    // CHURCH NAME
+    document.getElementById('churchName').innerText =
+      data.church_name || '';
+
+    // SUBTITLE
+    document.getElementById('churchSubtitle').innerText =
+      data.church_subtitle || '';
+
+    // HERO TITLE
+    document.getElementById('heroTitle').innerText =
+      data.hero_title || '';
+
+    // HERO DESCRIPTION
+    document.getElementById('heroDescription').innerText =
+      data.hero_description || '';
+
+    // ABOUT TITLE
+    document.getElementById('aboutTitle').innerText =
+      data.about_title || '';
+
+    // ABOUT DESCRIPTION
+    document.getElementById('aboutDescription').innerText =
+      data.about_description || '';
+
+    // SERVICE TIMES
+    document.getElementById('sundayService').innerText =
+      data.sunday_service || '';
+
+    document.getElementById('midweekService').innerText =
+      data.midweek_service || '';
+
+    // FOOTER
+    document.getElementById('footerText').innerText =
+      data.footer_text || '';
+
+    // LOGO
+    if(data.logo_url){
+
+      document.getElementById('churchLogo').src =
+        data.logo_url;
+
+    }
+
+  }
+
+  // LOAD SERMONS
+  async function loadSermons(){
+
+    const { data, error } =
+      await supabaseClient
+        .from('sermons')
+        .select('*')
+        .order('created_at', {
+          ascending:false
+        });
+
+    if(error){
+      console.error(error);
+      return;
+    }
+
+    const sermonsContainer =
+      document.getElementById('sermonsContainer');
+
+    sermonsContainer.innerHTML = '';
+
+    data.forEach((sermon)=>{
+
+      sermonsContainer.innerHTML += `
+
+        <div class="bg-zinc-900 rounded-[2rem] overflow-hidden">
+
+          <img
+            src="${sermon.image_url}"
+            class="h-64 w-full object-cover"
+          />
+
+          <div class="p-8">
+
+            <p class="text-zinc-400 text-sm uppercase tracking-[0.2em]">
+              ${sermon.category || ''}
+            </p>
+
+            <h3 class="text-3xl font-black mt-4">
+              ${sermon.title || ''}
+            </h3>
+
+            <a
+              href="${sermon.video_link || '#'}"
+              target="_blank"
+              class="inline-block mt-8 text-yellow-400 font-semibold uppercase tracking-[0.2em]"
+            >
+              Watch Sermon →
+            </a>
+
+          </div>
+
+        </div>
+
+      `;
 
     });
 
-  </script>
+  }
+
+  // LOAD EVENTS
+  async function loadEvents(){
+
+    const { data, error } =
+      await supabaseClient
+        .from('events')
+        .select('*')
+        .order('created_at', {
+          ascending:false
+        });
+
+    if(error){
+      console.error(error);
+      return;
+    }
+
+    const eventsContainer =
+      document.getElementById('eventsContainer');
+
+    eventsContainer.innerHTML = '';
+
+    data.forEach((event)=>{
+
+      eventsContainer.innerHTML += `
+
+        <div class="bg-white rounded-[2rem] p-10 shadow-lg">
+
+          <p class="text-zinc-500 uppercase tracking-[0.2em] text-sm">
+            ${event.event_date || ''}
+          </p>
+
+          <h3 class="text-4xl font-black mt-4">
+            ${event.title || ''}
+          </h3>
+
+          <p class="mt-4 text-zinc-600 leading-relaxed">
+            ${event.description || ''}
+          </p>
+
+        </div>
+
+      `;
+
+    });
+
+  }
+
+  loadWebsiteSettings();
+  loadSermons();
+  loadEvents();
+
+</script>
 
 </body>
 </html>
